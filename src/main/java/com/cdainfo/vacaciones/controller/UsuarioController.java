@@ -26,6 +26,7 @@ import com.cdainfo.vacaciones.serviceImp.SevicePeticionImpl;
 public class UsuarioController {
 	@Autowired
 	SevicePeticionImpl servicePeticion;
+	
 
 	@GetMapping("/peticion") // trae la peticion
 	public String peticion(Model model) {
