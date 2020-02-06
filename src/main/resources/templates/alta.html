@@ -39,9 +39,9 @@
 	<div class="row">
   <div class="col-4">
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">solicitudes</a>
-      <a class="list-group-item list-group-item-action" id="aceptadas" data-toggle="list" href="#aceptadas" role="tab" aria-controls="messages">aceptadas</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#rechazada" role="tab" aria-controls="settings">rechazadas</a>
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Solicitudes Pendientes</a>
+      <a class="list-group-item list-group-item-action" id="aceptadas" data-toggle="list" href="#aceptadas" role="tab" aria-controls="messages">Aceptadas</a>
+      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#rechazada" role="tab" aria-controls="settings">Rechazadas</a>
     </div>
   </div>
   <div class="col-8">
@@ -62,7 +62,7 @@
 					<th class="text" th:text="${registro.diaAlta}"></th>
 					<th th:text="${registro.diaHasta}"></th>
 					<th th:text="${registro.tipoDeLicencia}"></th>
-					<th><a href="#aceptadas" class="btn btn-secondary btn-lg"> aprobado</a></th>
+					<th><a href="//aceptadas" class="btn btn-secondary btn-lg"> aprobado</a></th>
 					<th><a href="#rechazada" class="btn btn-secondary btn-lg">rechazar</a> <input type="text" placeholder="motivos" required></th>
 				</tr>
 			</tbody>
