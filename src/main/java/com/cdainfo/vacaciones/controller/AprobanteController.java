@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cdainfo.vacaciones.entity.Peticion;
+import com.cdainfo.vacaciones.entity.TipoDeLicencia;
+import com.cdainfo.vacaciones.serviceImp.ServiceTipoImpl;
 import com.cdainfo.vacaciones.serviceImp.SevicePeticionImpl;
 
 
@@ -22,7 +24,11 @@ public class AprobanteController {
 	
 	@Autowired
 	SevicePeticionImpl servicepeticion;
-	
+	/*
+	@Autowired
+	ServiceTipoImpl servicetipo;
+	*/
+
 	@GetMapping("/peticion") // trae la peticion
 	public String peticion(Model model) {
 		model.addAttribute("peticion", new Peticion());
@@ -38,6 +44,12 @@ public class AprobanteController {
 	 List<Peticion> lista = servicepeticion.traerTodas();
 	 model.addAttribute("ListaPeticiones", lista);
 	 return "alta";
+	 }
+	
+	/*@GetMapping("/usuarios") //trae los usuarios
+	 public List<Usuario> getAllUsuarios() {
+	 List<Usuario> lista = serviceusuario.traerTodos();
+	 return lista;
 	 }
 	
 	/*@GetMapping("/usuarios") //trae los usuarios

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cdainfo.vacaciones.entity.Peticion;
+import com.cdainfo.vacaciones.entity.TipoDeLicencia;
 import com.cdainfo.vacaciones.entity.Usuario;
 import com.cdainfo.vacaciones.repository.PeticionRepository;
 import com.cdainfo.vacaciones.service.ServicePeticion;
@@ -36,11 +37,14 @@ public class SevicePeticionImpl implements ServicePeticion{
 		}
 	}	
 
+
 	@Override
 	public void guardar(Peticion peticion) {
 		
 		peticionRepository.save(peticion);
 	}
+
+
 
 	
 

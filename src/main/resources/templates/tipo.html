@@ -1,0 +1,33 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="card bg-light">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+		
+</select>
+				
+ <tr th:each="tipoDeLicencia : ${ListaLicencias}">
+					<th class="number" th:number="${tipoDeLicencia.id}"></th> 
+				<div class="form-group-row">
+				<label class="col-md-2" for="tipoDeLicencia"> Tipos de Licencias</label>
+					<select style="width:120px" th:field="${tipoDeLicencia}" class="form-control form-control-sm col-md-6" id="ciudad">
+					<option  th:each="tipoDeLicencia:${licencias}"
+					th:value="${tipoDeLicencia.id}"
+					th:text="${tipoDeLicencia.tipo}"
+					/>
+					</select>
+				</div>
+</body>
+</html>
+
+
+
+<p>Motivo de la licencia:</br><input type="text" placeholder="Ingrese el motivo" th:field="*{tipoDeLicencia}" required></p>
+
+-->

@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>resultadoPeticion</h1>
+	<form th:action="@{cargarPeticion}" th:object="${peticion}" method="put">
+     <p th:text="Dia Alta:' + ${Peticion.diaAlta}" />
+     <p th:text="Dia Hasta:' + ${Peticion.diaHasta}" />
+     <p th:text="'Tipo de Licencia ' + ${Peticion.tipoDeLicencia}" />
+     <p th:text="cantidad Dias:' + ${Peticion.cantidadDias}" />
+     <p th:text="estado:' + ${Peticion.estado}" />
+    <a href="/peticion">Submit another message</a>
+    </form>
+</body>
+</html>

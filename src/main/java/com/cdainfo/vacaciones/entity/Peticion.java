@@ -1,5 +1,6 @@
 package com.cdainfo.vacaciones.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,9 @@ import javax.persistence.ManyToOne;
 
 
 @Entity
-public class Peticion {
+public class Peticion implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,18 +25,25 @@ public class Peticion {
 	@Column(name = "diaAlta")
 	private Date diaAlta;
 	
-		@Column(name = "diaHasta")
+	@Column(name = "diaHasta")
 	private Date diaHasta;
-
+	
 	@Column(name = "tipoDeLicencia")
 	private String tipoDeLicencia;
+
+	public String getTipoDeLicencia() {
+		return tipoDeLicencia;
+	}
+
+	public void setTipoDeLicencia(String tipoDeLicencia) {
+		this.tipoDeLicencia = tipoDeLicencia;
+	}
 
 	@Column(name = "cantidadDias")
 	private Integer cantidadDias;
 
 	@Column(name = "estado")
 	private String estado;
-
 
 	public Date getDiaAlta() {
 		return diaAlta;
@@ -53,13 +63,6 @@ public class Peticion {
 		this.numeroPeticion = numeroPeticion;
 	}
 
-	public String getTipoDeLicencia() {
-		return tipoDeLicencia;
-	}
-
-	public void setTipoDeLicencia(String tipoDeLicencia) {
-		this.tipoDeLicencia = tipoDeLicencia;
-	}
 
 	public Integer getCantidadDias() {
 		return cantidadDias;
@@ -89,10 +92,12 @@ public class Peticion {
 
 	@Override
 	public String toString() {
-		return "Peticion [numeroPeticion=" + numeroPeticion  + ", tipoDeLicencia="
-				+ tipoDeLicencia + ", cantidadDias=" + cantidadDias + ", estado=" + estado + ", diaAlta=" + diaAlta
-				+ ", diaHasta=" + diaHasta + "]";
+		return "Peticion [numeroPeticion=" + numeroPeticion + ", diaAlta=" + diaAlta + ", diaHasta=" + diaHasta
+				+ ", cantidadDias=" + cantidadDias + ", estado=" + estado + "]";
 	}
+
+
+
 
 	//public void tiposDePeticion() {
 

@@ -5,20 +5,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	
 	<h1>Peticiones</h1>
 	<form th:action="@{/cargarPeticion}" th:object="${peticion}" method="post" required>
 		<p>Desde:</br><input type="date" placeholder="Desde" th:field="*{diaAlta}" required></p>
-		<p>Hasta:</br><input type="date" placeholder="Hasta" th:field="*{diaHasta}" required></p>			
-				<label class="col-md-2" for="tipoDeLicencia"> Tipo de Licencia</label>
-					<select  th:field="*{tipoDeLicencia}"  id="ciudad">
-					<option  th:each="tipoDeLicencia:${licencias}"
-					th:value="${tipoDeLicencia.tipo}"
-					th:text="${tipoDeLicencia.tipo}"
-					/>
-					</select>
-				</div>
-				
+		<p>Hasta:</br><input type="date" placeholder="Hasta" th:field="*{diaHasta}" required></p>
+		<p>Motivo de la licencia:</br><input type="text" placeholder="Ingrese el motivo" th:field="*{tipoDeLicencia}" required></p>
 		<p><input type="submit" value="Enviar"><input type="reset" value="Limpiar"></p>
 	</form>
 </body>
