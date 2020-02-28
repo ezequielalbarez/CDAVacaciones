@@ -1,32 +1,35 @@
 package com.cdainfo.vacaciones.controller;
 
-import java.sql.Date;
+import java.util.List;
 
-import org.hibernate.mapping.List;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
+import com.cdainfo.vacaciones.entity.Empleado;
 import com.cdainfo.vacaciones.entity.Peticion;
-import com.cdainfo.vacaciones.repository.PeticionRepository;
+import com.cdainfo.vacaciones.serviceImp.ServiceEmpleadompl;
 import com.cdainfo.vacaciones.serviceImp.SevicePeticionImpl;
-
-
 
 @Controller
 public class UsuarioController {
+
 	@Autowired
 	SevicePeticionImpl servicePeticion;
-	
+	@Autowired
+	ServiceEmpleadompl serviceEmpleado;
 
 	@GetMapping("/peticion") // trae la peticion
 	public String peticion(Model model) {
@@ -35,67 +38,36 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/cargarPeticion") // carga la peticion
-		public String cargaPeticion(@ModelAttribute Peticion peticion) {
-			servicePeticion.guardar(peticion);
-			return "peticionEnviada";
+	public String cargaPeticion(@ModelAttribute Peticion peticion) {
+		servicePeticion.guardar(peticion);
+		return "peticionEnviada";
+	}
+
+	@GetMapping("/login")
+	public String greetingForm() {
+		return "login";
+	}
+
+	@GetMapping("/logueando")//para el login
+	public String loginci(@RequestParam(value = "entradaEmail", required = true) String buscar, 
+			Model modelo) {//entra el email llamado buscar como parametro 
+		Empleado emp = serviceEmpleado.buscarPorEmail(buscar);//guarda buscar en emp
+
+		if (emp.equals(null)) {//si el email no coincide retornaria denuevo la pagina de login
+			// Usuarioa no valido
+			return "/login";
+		} else if (emp.getLider()==null) {//si el email coincide pero es un lider (que no tenga a quierenes reportar)
+			// traer las peticiones correspondiente a sus empleados a cargo.
+			List<Peticion> unaListado = servicePeticion.traerTodas();//trae una lista
+			modelo.addAttribute("ListaPeticiones", unaListado);
+			return "/alta";
+		} else {
+			modelo.addAttribute("empleado", emp);//si tiene a quien reportar va a la creacion de peticion
+			return "redirect:/peticion";
 		}
+		// serviceEmpleado.traerUsuario(empleado);
+		// modelo.addAttribute("estado", "Este usuario no existe, por favor ingrese
+		// datos para el alta usuario");
 
-	/*
-	 * @GetMapping("/peticionvacas")//trae la peticion public String
-	 * getPeticion(Model model) { model.addAttribute("peticion", new Peticion());
-	 * return "peticion"; }
-	 * 
-	 * @GetMapping("/peticion") public String
-	 * greeting(@RequestParam(name="numeroPeticion") Long numeroPeticion, Model
-	 * model) { model.addAttribute("peticion", new Peticion()); return "peticion"; }
-	 * 
-	 * @GetMapping("/peticion") public String crearPeticion(Model model) {
-	 * model.addAttribute("peticion", new Peticion()); return "peticion"; }
-	 */
-	/*
-	 * @GetMapping("/peticion") public Optional<Peticion> getPeticion(@PathVariable
-	 * Long numeroPeticion) { return
-	 * peticionRepository.findByNumeroPeticion(numeroPeticion); }
-	 */
-	/*
-	 * @GetMapping("/usuario/{usuarioId}") //trae el usuario por la id(legajo)
-	 * public Usuario getUsuario(@PathVariable Long usuarioId){
-	 * System.out.println("Usuario: " + usuarioId); Usuario usuario =
-	 * serviceUsuario.findById(usuarioId); // usuario.setEstado(Estado.Aprobado); //
-	 * if ( usuario.getEstado() == Estado.Cancelado ) { // // } return usuario; }
-	 * 
-	 * @PostMapping("/usuario")//crea un usuario para mandarle a la tabla "usuario"
-	 * public Usuario crearUsuario(@RequestBody Usuario usuario) { usuario =
-	 * serviceUsuario.grabar(usuario);
-	 * 
-	 * return usuario;
-	 * 
-	 * }
-	 */
-
-	/*
-	 * @PostMapping("/cargarPeticion")//carga la peticion public String
-	 * cargarPeticion(@ModelAttribute Peticion peticion) { return
-	 * "resultadoPeticion"; }
-	 * 
-	 * @PutMapping("/usuario")//editar usuario public Usuario
-	 * actualizarUsuario(@RequestBody Usuario usuario) {
-	 * 
-	 * usuario = serviceUsuario.grabar(usuario);
-	 * 
-	 * return usuario; }
-	 * 
-	 * @DeleteMapping("usuario_borrar/{usuarioId}") public String
-	 * eliminarUsuario(@PathVariable Long usuarioId) {
-	 * 
-	 * Usuario usuario = serviceUsuario.findById(usuarioId);
-	 * 
-	 * if ( usuario == null ) { throw new RuntimeException("Usuario con id " +
-	 * usuarioId + " no se encuentra"); }
-	 * 
-	 * serviceUsuario.borrar(usuario);
-	 * 
-	 * return "Se ha eliminado el usuario id = "+usuarioId; }
-	 * 
-	 */
+	}
 }

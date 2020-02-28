@@ -2,27 +2,33 @@ package com.cdainfo.vacaciones.entity;
 
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.Table;
+
+
+//import com.cdainfo.vacaciones.estados.Aprobado;
+//import com.cdainfo.vacaciones.estados.Iniciado;
+//import com.cdainfo.vacaciones.estados.Rechazado;
 
 
 @Entity
+@Table(name="peticion")
 public class Peticion {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long numeroPeticion;
 
 	@Column(name = "diaAlta")
 	private Date diaAlta;
 	
-		@Column(name = "diaHasta")
+	@Column(name = "diaHasta")
 	private Date diaHasta;
 
 	@Column(name = "tipoDeLicencia")
@@ -34,6 +40,7 @@ public class Peticion {
 	@Column(name = "estado")
 	private String estado;
 
+	//@Column(name = "empleadoid")
 
 	public Date getDiaAlta() {
 		return diaAlta;
@@ -43,7 +50,7 @@ public class Peticion {
 		this.diaAlta = diaAlta;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 
 	public Long getNumeroPeticion() {
 		return numeroPeticion;
@@ -86,6 +93,14 @@ public class Peticion {
 	public void setDiaHasta(Date diaHasta) {
 		this.diaHasta = diaHasta;
 	}
+	
+	//public Integer getEmpleadoId() {
+	//	return empleadoId;
+	//}
+
+	//public void setEmpleadoId(Integer empleadoId) {
+		//this.empleadoId = empleadoId;
+	//}
 
 	@Override
 	public String toString() {
@@ -94,12 +109,6 @@ public class Peticion {
 				+ ", diaHasta=" + diaHasta + "]";
 	}
 
-	//public void tiposDePeticion() {
 
-//	}
-
-	//public void verEstadoDeLaPeticion() {
-
-//	}
 
 }

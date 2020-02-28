@@ -2,6 +2,8 @@ package com.cdainfo.vacaciones.controller;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cdainfo.vacaciones.entity.Peticion;
-import com.cdainfo.vacaciones.estados.EstadoImp;
+
 import com.cdainfo.vacaciones.serviceImp.SevicePeticionImpl;
 
 
@@ -20,13 +22,13 @@ import com.cdainfo.vacaciones.serviceImp.SevicePeticionImpl;
 @RequestMapping("/aprobante")
 public class AprobanteController {
 	
-	
+
+
 	@Autowired
 	SevicePeticionImpl servicepeticion;
 	
-	EstadoImp estadoImp;
 	
- 	@GetMapping("/peticion") // trae la peticion
+	@GetMapping("/peticion") // trae la peticion
 	public String peticion(Model model) {
 		model.addAttribute("peticion", new Peticion());
 		return "peticion";
@@ -42,6 +44,6 @@ public class AprobanteController {
 	 model.addAttribute("ListaPeticiones", lista);
 	 return "alta";
 	 }
-
+	
     	
 }

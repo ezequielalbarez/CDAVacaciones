@@ -37,51 +37,58 @@
 <body>
  <form action="/aprobado">
 	<div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" data-toggle="tags" id="solicitudes" href="#solicitudes" role="tab" aria-controls="solicitudes">solicitudes</a>
-      <a class="list-group-item list-group-item-action"  data-toggle="tags"  id="aceptadas" href="#aceptadas" role="tab" aria-controls="aceptadas">aceptadas</a>
-      <a class="list-group-item list-group-item-action"  data-toggle="tags" id="rechazadas" href="#rechazadas" role="tab" aria-controls="rechazadas">rechazadas</a>
-    </div>
-  </div>
-  <div class="col-8">
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="solicitudes" role="tags" aria-labelledby="solicitudes"><div class="container">
+	  <div class="col-4">
+	    <div class="list-group" id="list-tab" role="tablist">
+	      <a class="list-group-item list-group-item-action active" data-toggle="tags" id="solicitudes" href="#solicitudes" role="tab" aria-controls="solicitudes">solicitudes</a>
+	      <a class="list-group-item list-group-item-action"  data-toggle="tags"  id="aceptadas" href="#aceptadas" role="tab" aria-controls="aceptadas">aceptadas</a>
+	      <a class="list-group-item list-group-item-action"  data-toggle="tags" id="rechazadas" href="#rechazadas" role="tab" aria-controls="rechazadas">rechazadas</a>
+	    </div>
+	  </div>
+  	  <div class="col-8">
+    	<div class="tab-content" id="nav-tabContent">
+      	<div class="tab-pane fade show active" id="solicitudes" role="tags" aria-labelledby="solicitudes">
+      	<div class="container">
 
-	</div></div>
+		</div></div>
       <div class="tab-pane fade" id="aceptadas" role="tags" aria-labelledby="aceptadas">aceptadas</div>
       <div class="tab-pane fade" id="rechazadas" role="tags" aria-labelledby="rechazadas">rechazadas</div>
     </div>
   </div>
 </div>
-</form>
-</body>
+	</form>
+	<form method=POST name=aprobacion action="#">
 		<table id="miTabla"
 			class="table table-hover table-inverse table-responsive">
 			<thead class="thead-inverse">
 				<tr>
+					<th>Empleado</th>
 					<th>Dia Alta</th>
 					<th>Dia hasta</th>
 					<th>Tipo de licencia</th>
 				</tr>
 			</thead>
 			<tbody>
-			
 				<tr th:each="registro : ${ListaPeticiones}">
-					<th class="text" th:text="${registro.diaAlta}"></th>
-					<th th:text="${registro.diaHasta}"></th>
-					<th th:text="${registro.tipoDeLicencia}"></th>
-					<td><a rel="noopener" href="#aceptadas" lang="en" class="external" hreflang="en">HTML5<br><small lang="es">AAAAAAAAA '&lt;select&gt;' en esta especificación.</small></a></td>
-					<th><button type="button" class="btn btn-secondary btn-lg">rechazar</button> <input type="text" placeholder="motivos" required></th>
-				
-				</tr>
-				
+					<!-- td class="text" th:text="${registro.empleadoid}"></td-->
+					<td class="text" th:text="${registro.diaAlta}"></td>
+					<td th:text="${registro.diaHasta}"></td>
+					<td th:text="${registro.tipoDeLicencia}"></td>
+					<td>
+						<input type="checkbox" name="sel+peticionID">
+					</td>
+				</tr>		
 			</tbody>
-			
 		</table> 
+	</form>
+		<label>Motivo</label>
+		<textarea  placeholder="motivos" rows=7 cols=90 required></textarea>
+		<br>
+		<button type="submit" class="btn btn-danger btn-lg">rechazar</button> 
+		<button type="submit" class="btn btn-success btn-lg">Aprobar</button> 
+	<!--/form-->
 </html>
 
 
-
+ 
 
 

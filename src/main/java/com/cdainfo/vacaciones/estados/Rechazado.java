@@ -1,44 +1,28 @@
 package com.cdainfo.vacaciones.estados;
 
-public class Rechazado implements State{
+/*import com.cdainfo.vacaciones.entity.Peticion;
+
+public class Rechazado extends State {
 
 	private EstadoImp estadoImp;
 
 	@Override
-	public void Aprobado() {
+	public void setState(EstadoImp estadoImp) {
+		this.estadoImp = estadoImp;
+
+	}
+
+	@Override
+	public void aprobado(EstadoImp estadoImp) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void Rechazado() {
-		System.out.println("su peticion esta rechazada");
+	public void rechazado(EstadoImp estadoImp) {
+		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void Iniciado() {
-
-		
-	}
-
-	@Override
-	public void EnProceso() {
-	
-		
-	}
-
-	@Override
-	public void Cancelado() {
-
-		
-	}
-
-	@Override
-	public void setState(EstadoImp estadoImp) {
-		this.estadoImp = estadoImp;
-		
-	}
-
-	
 }
+*/

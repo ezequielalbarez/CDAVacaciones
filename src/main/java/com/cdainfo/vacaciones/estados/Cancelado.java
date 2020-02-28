@@ -1,45 +1,24 @@
 package com.cdainfo.vacaciones.estados;
 
-public class Cancelado  implements State{
+/*import com.cdainfo.vacaciones.entity.Peticion;
+
+public class Cancelado extends State {
 
 	private EstadoImp estadoImp;
 
 	@Override
-	public void Aprobado() {
-		
-	}
-
-	@Override
-	public void Rechazado() {
+	public void aprobado(EstadoImp estadoImp) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void Iniciado() {
+	public void rechazado(EstadoImp estadoImp) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void EnProceso() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void Cancelado() {
-	System.out.println("esta cancelada su peticion");
-		
-	}
-
-	@Override
-	public void setState(EstadoImp estadoImp) {
-		this.estadoImp = estadoImp;
-		
-	}
-
-		
 	
 
 }
+*/

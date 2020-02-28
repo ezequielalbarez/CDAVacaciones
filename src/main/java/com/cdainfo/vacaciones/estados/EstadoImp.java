@@ -1,36 +1,28 @@
 package com.cdainfo.vacaciones.estados;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-
-public class EstadoImp {
-	@Autowired
+/*public class EstadoImp {
 	private State estado;
 
 	public EstadoImp() {
-
-		setState(new EnProceso());
+		this.setState(new Iniciado());
 	}
 
 	public void setState(State estado) {
 		this.estado = estado;
-        this.estado.setState(this);  
+
 	}
-	public void Aprobado() {
-		this.estado.Aprobado();
+	public void aprobado() {
+		this.estado.aprobado(null);
+		
 	}
-	public void Cancelado() {
-		this.estado.Cancelado();
+	public void rechazado() {
+		this.estado.rechazado(null);
+		
 	}
-	public void EnProceso() {
-		this.estado.EnProceso();
+
+	public void cancela() {
+		this.estado.cancelada();
 	}
-	public void Iniciado() {
-		this.estado.Iniciado();
-	}
-	public void Rechazado() {
-		this.estado.Aprobado();	
-		}
-	
-	
-	}
+
+
+}*/
