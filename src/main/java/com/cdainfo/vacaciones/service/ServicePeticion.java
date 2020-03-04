@@ -14,6 +14,7 @@ public interface ServicePeticion {
 	Peticion findByNumeroPeticion(Long numeroPeticion);
 	
 	void guardar(Peticion peticion);
+	
 
-
+	
 }

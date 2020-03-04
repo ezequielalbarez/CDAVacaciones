@@ -2,6 +2,7 @@ package com.cdainfo.vacaciones.controller;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cdainfo.vacaciones.entity.Peticion;
@@ -44,39 +46,76 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/peticion") // trae la peticion
-	public String peticion(Model model) {
-		Peticion peticion = new Peticion();		
+	public String peticion(Model model, @RequestParam (value = "id", required = false) Integer id, @RequestParam (value="diasD", required = false)Integer diasD) {
+		Peticion peticion = new Peticion();	
 		List<TipoDeLicencia> listatipos = servicetipo.findAll();
+		TipoDeLicencia tipos = servicetipo.findAllByIdAndDiasD(id, diasD);
 		model.addAttribute("peticion", peticion);
 		model.addAttribute("titulo", "Formulario: Nueva Licencia");
 		model.addAttribute("licencias", listatipos);
+		model.addAttribute("idemp", id);
+		model.addAttribute("dias", diasD);
+		model.addAttribute("tipos", tipos);
 		return "peticion";
 	}
 	
-	
+
 /*	@GetMapping("/peticion") // trae la peticion
-	public String peticion(Model model) {
-		TipoDeLicencia tipo = new TipoDeLicencia();
-		List<TipoDeLicencia> listatipos = servicetipo.findAll();
-		model.addAttribute("peticion", new Peticion());
+	public String peticion(Model model, @RequestParam (value = "id", required = false) Integer id, @RequestParam (value="diasD", required = false)Integer diasD) {
+		Peticion peticion = new Peticion();	
+		List<TipoDeLicencia> listatipos = servicetipo.traerTod();
+		Integer tipos = servicetipo.findByIdAndDiasD(id, diasD);
+		model.addAttribute("peticion", peticion);
 		model.addAttribute("titulo", "Formulario: Nueva Licencia");
-		model.addAttribute("tipoDeLicencia", tipo);
 		model.addAttribute("licencias", listatipos);
+		model.addAttribute("idemp", id);
+		model.addAttribute("dias", diasD);
+		model.addAttribute("tipos", tipos);
 		return "peticion";
 	}
 */	
 	@PostMapping("/cargarPeticion") // carga la peticion
-	public String cargaPeticion(@Valid @ModelAttribute Peticion peticion,BindingResult result,Model model,RedirectAttributes attribute) {
+	public String cargaPeticion(@Valid @ModelAttribute Peticion peticion,BindingResult result,Model model,RedirectAttributes attribute, @RequestParam (value = "id", required = false) Integer id, @RequestParam (value="diasD", required = false)Integer diasD) {
 		List<TipoDeLicencia> lista = servicetipo.findAll();
+		TipoDeLicencia tipos = servicetipo.findAllByIdAndDiasD(id, diasD);
 		if (result.hasErrors()) {
 		model.addAttribute("titulo", "Formulario: Nueva Licencia");
 		model.addAttribute("peticion", peticion);
 		model.addAttribute("tipoDeLicencia", lista);
+		model.addAttribute("tipos", tipos);
 		return "peticionEnviada";
 		}
 		servicePeticion.guardar(peticion);
-		return "redirect:peticion";
+		return "peticionEnviada";
 	}
+	
+
+/*		@GetMapping("/peticion") // trae la peticion
+	public String peticion(Model model) {
+		Peticion peticion = new Peticion();				
+		List<TipoDeLicencia> listatipos = servicetipo.findAll();
+		model.addAttribute("peticion", peticion);
+		model.addAttribute("titulo", "Formulario: Nueva Licencia");
+		model.addAttribute("licencias", listatipos);
+		model.addAttribute("dias", listatipos);
+		return "peticion";
+	}
+*/
+/*	@GetMapping("/peticion") // trae la peticion
+	public String peticion(Model model) {
+		Peticion peticion = new Peticion();		
+		List<TipoDeLicencia> listatipos = servicetipo.findAll();
+		Optional<TipoDeLicencia> listaDias = servicetipo.findByIdAndDiasD();
+		model.addAttribute("peticion", peticion);
+		model.addAttribute("titulo", "Formulario: Nueva Licencia");
+		model.addAttribute("licencias", listatipos);
+		model.addAttribute("dias", listaDias);
+		return "peticion";
+	}
+*/
+
+/*	
+*/	
 
 /*	@PostMapping("/cargarPeticion") // carga la peticion
 		public String cargaPeticion(@ModelAttribute Peticion peticion) {
