@@ -15,6 +15,6 @@ public interface ServicePeticion {
 	void guardar(Peticion peticion);
 	
 	List<Peticion> getPeticionesByEmail(String email);
-
+  
 
 }

@@ -1,6 +1,5 @@
 package com.cdainfo.vacaciones.serviceImp;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,7 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cdainfo.vacaciones.entity.Empleado;
 import com.cdainfo.vacaciones.entity.Peticion;
 import com.cdainfo.vacaciones.repository.EmpleadoRepository;
 import com.cdainfo.vacaciones.repository.PeticionRepository;
@@ -16,8 +14,6 @@ import com.cdainfo.vacaciones.service.ServicePeticion;
 
 @Service
 public class SevicePeticionImpl implements ServicePeticion{
-	
-//	final static Logger log = Logger.getLogger(SevicePeticionImpl.class);
 	
 	@Autowired
 	PeticionRepository peticionRepository; 

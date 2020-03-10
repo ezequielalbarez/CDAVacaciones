@@ -1,46 +1,67 @@
 package com.cdainfo.vacaciones.entity;
 
-import java.sql.Date;
 
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+//import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-//import com.cdainfo.vacaciones.estados.Aprobado;
-//import com.cdainfo.vacaciones.estados.Iniciado;
-//import com.cdainfo.vacaciones.estados.Rechazado;
-
-
 @Entity
-@Table(name="peticion")
+@Table(name="emp_lic")
 public class Peticion {
-
+	
+	
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long numeroPeticion;
+	@GeneratedValue(strategy = GenerationType.AUTO )
+	private Integer emp_licnro;
+	
+	@Column(name="elcantdias")
+	private Integer cantdiasxlicencia;
 
-	@Column(name = "diaAlta")
+	@Column(name = "elfechadesde")
 	private Date diaAlta;
 	
-	@Column(name = "diaHasta")
+	@Column(name = "elfechahasta")
 	private Date diaHasta;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "empleado",
+	referencedColumnName = "ternro")
+	private Empleado empleadoId;
 
-	@Column(name = "tipoDeLicencia")
-	private String tipoDeLicencia;
+	@ManyToOne
+	@JoinColumn(name = "tdnro",
+	referencedColumnName = "tdnro")
+	private Licencia numeroPeticion;
+	
 
-	@Column(name = "cantidadDias")
-	private Integer cantidadDias;
+	
 
-	@Column(name = "estado")
-	private String estado;
+	public Integer getEmp_licnro() {
+		return emp_licnro;
+	}
 
-	//@Column(name = "empleadoid")
+	public void setEmp_licnro(Integer emp_licnro) {
+		this.emp_licnro = emp_licnro;
+	}
+
+	public Integer getCantdiasxlicencia() {
+		return cantdiasxlicencia;
+	}
+
+	public void setCantdiasxlicencia(Integer cantdiasxlicencia) {
+		this.cantdiasxlicencia = cantdiasxlicencia;
+	}
 
 	public Date getDiaAlta() {
 		return diaAlta;
@@ -50,42 +71,6 @@ public class Peticion {
 		this.diaAlta = diaAlta;
 	}
 
-//	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-
-	public Long getNumeroPeticion() {
-		return numeroPeticion;
-	}
-
-	public void setNumeroPeticion(Long numeroPeticion) {
-		this.numeroPeticion = numeroPeticion;
-	}
-
-	public String getTipoDeLicencia() {
-		return tipoDeLicencia;
-	}
-
-	public void setTipoDeLicencia(String tipoDeLicencia) {
-		this.tipoDeLicencia = tipoDeLicencia;
-	}
-
-	public Integer getCantidadDias() {
-		return cantidadDias;
-	}
-
-	public void setCantidadDias(Integer cantidadDias) {
-		this.cantidadDias = cantidadDias;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	
-
 	public Date getDiaHasta() {
 		return diaHasta;
 	}
@@ -93,22 +78,25 @@ public class Peticion {
 	public void setDiaHasta(Date diaHasta) {
 		this.diaHasta = diaHasta;
 	}
-	
-	//public Integer getEmpleadoId() {
-	//	return empleadoId;
-	//}
 
-	//public void setEmpleadoId(Integer empleadoId) {
-		//this.empleadoId = empleadoId;
-	//}
-
-	@Override
-	public String toString() {
-		return "Peticion [numeroPeticion=" + numeroPeticion  + ", tipoDeLicencia="
-				+ tipoDeLicencia + ", cantidadDias=" + cantidadDias + ", estado=" + estado + ", diaAlta=" + diaAlta
-				+ ", diaHasta=" + diaHasta + "]";
+	public Integer getNumeroPeticion() {
+		return numeroPeticion.getId();
 	}
 
+	public void setNumeroPeticion(Integer numeroPeticion) {
+		this.numeroPeticion.setId(numeroPeticion);;
+	}
 
+	public Integer getEmpleadoId() {
+		return empleadoId.getId();
+	}
 
+	public void setEmpleadoId(Integer empleadoId) {
+		this.empleadoId.setId(empleadoId);
+	}
+	
+	
 }
+
+
+

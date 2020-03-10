@@ -1,7 +1,9 @@
 package com.cdainfo.vacaciones.entity;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -24,8 +26,8 @@ public class Empleado  {
 	
 	@Column(name="empreporta")
 	private Integer lider;
-
-	public Integer getLider() {
+	
+    public Integer getLider() {
 		return lider;
 	}
 
@@ -72,5 +74,4 @@ public class Empleado  {
 				+ lider + "]";
 	}
 
-	
 	}

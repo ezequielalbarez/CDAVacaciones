@@ -20,6 +20,12 @@ public interface PeticionRepository extends JpaRepository<Peticion,Long> {
 	//List<Peticion> findAllByDiaAltaAndTipoDeLicenciaAndCantidadDias(String diaAlta, String tipoDeLicencia,Date cantidadDias);
 	Optional<Peticion> findByNumeroPeticion(Long numeroPeticion);
 	//List<Peticion> findAllByEmpleadoId(Integer empleadoId);
+	/*
+	 *  select elfechadesde , elfechahasta , empleado,terape,empreporta
+  from emp_lic inner join empleado on empleado.ternro = emp_lic.empleado
+  where empreporta =4323
+
+	 */
 	
 
 }

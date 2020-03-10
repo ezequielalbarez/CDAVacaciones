@@ -64,17 +64,24 @@ public class ServiceEmpleadompl implements ServiceEmpleado {
 		}
 		return null;
 	}
+	
 
 
 
 	public void traerUsuario(Empleado empleado) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public Empleado findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public List<Empleado> findByAllLider(Integer lider) {
+		
+		return empleadoRepository.findAllByLider(lider);
 	}
 
 }

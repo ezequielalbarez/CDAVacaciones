@@ -3,7 +3,6 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,21 +15,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <title>Lista de peticiones</title>
-
-<!-- <script>
-		$(document).ready(function () {
-			$("#miTabla:has(td)").mouseover(function (e) {
-				$(this).css("cursor", "pointer");
-			});
-			$("#miTablatr:has(td)").click(function (e) {
-				$("#miTabla td").removeClass("highlight");
-				var clickedCell = $(e.target).closest("td");
-				clickedCell.addClass("highlight");
-				$("#spnText").html(
-					'Clicked table cell value is: <b> ' + clickedCell.text() + '</b>');
-			});
-		});
-	</script> -->
 
 </head>
 <h1>Lista de peticiones</h1>
@@ -72,7 +56,7 @@
 					<!-- td class="text" th:text="${registro.empleadoid}"></td-->
 					<td class="text" th:text="${registro.diaAlta}"></td>
 					<td th:text="${registro.diaHasta}"></td>
-					<td th:text="${registro.tipoDeLicencia}"></td>
+<!-- 					<td th:text="${registro.tipoDeLicencia}"></td> -->
 					<td>
 						<input type="checkbox" name="sel+peticionID">
 					</td>

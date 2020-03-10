@@ -9,7 +9,7 @@
 	<form th:action="@{/cargarPeticion}" th:object="${peticion}" method="post" required>
 		<p>Desde:</br><input type="date" placeholder="Desde" th:field="*{diaAlta}" required></p>
 		<p>Hasta:</br><input type="date" placeholder="Hasta" th:field="*{diaHasta}" required></p>
-		<p>Motivo de la licencia:</br><input type="text" placeholder="Ingrese el motivo" th:field="*{tipoDeLicencia}" required></p>
+<!-- 		<p>Motivo de la licencia:</br><input type="text" placeholder="Ingrese el motivo" th:field="*{tipoDeLicencia}" required></p> -->
 		<p><input type="submit" value="Enviar"><input type="reset" value="Limpiar"></p>
 	</form>
 </body>
