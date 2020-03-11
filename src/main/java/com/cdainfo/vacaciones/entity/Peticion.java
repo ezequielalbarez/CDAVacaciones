@@ -1,8 +1,6 @@
 package com.cdainfo.vacaciones.entity;
 
-
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,16 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-//import javax.persistence.Id;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name="emp_lic")
 public class Peticion {
-	
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO )
 	private Integer emp_licnro;
@@ -33,7 +27,6 @@ public class Peticion {
 	@Column(name = "elfechahasta")
 	private Date diaHasta;
 	
-	
 	@ManyToOne
 	@JoinColumn(name = "empleado",
 	referencedColumnName = "ternro")
@@ -43,8 +36,6 @@ public class Peticion {
 	@JoinColumn(name = "tdnro",
 	referencedColumnName = "tdnro")
 	private Licencia numeroPeticion;
-	
-
 	
 
 	public Integer getEmp_licnro() {

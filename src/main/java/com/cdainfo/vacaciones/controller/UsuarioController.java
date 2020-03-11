@@ -33,7 +33,7 @@ public class UsuarioController {
 
 	@PostMapping("/cargarPeticion") // carga la peticion
 	public String cargaPeticion(@ModelAttribute Peticion peticion) {
-		servicePeticion.guardar(peticion);
+		//servicePeticion.guardar(peticion);
 		return "peticionEnviada";
 	}
 
