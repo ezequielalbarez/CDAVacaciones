@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cdainfo.vacaciones.entity.Empleado;
 import com.cdainfo.vacaciones.entity.Peticion;
 import com.cdainfo.vacaciones.serviceImp.ServiceEmpleadompl;
-import com.cdainfo.vacaciones.serviceImp.SevicePeticionImpl;
+import com.cdainfo.vacaciones.serviceImp.ServicePeticionImpl;
 
 @Controller
 @RequestMapping("/aprobante")
 public class AprobanteController {
 	
 	@Autowired
-	SevicePeticionImpl servicepeticion;
+	ServicePeticionImpl servicepeticion;
 	@Autowired
 	ServiceEmpleadompl serviceEmpleado;
 	
@@ -36,7 +36,7 @@ public class AprobanteController {
 	} 
 	@GetMapping("/lista") //trae los usuarios
 	 public String getAlltraerTodos(Model model) {
-	 List<Peticion> lista = servicepeticion.traerTodas();
+	 List<Peticion> lista = servicepeticion.listarPeticiones();
 	 List<Empleado> listaEmpleados = serviceEmpleado.listarEmpleados();
 	 
 	 model.addAttribute("ListaPeticiones", lista);
@@ -52,7 +52,7 @@ public class AprobanteController {
 			    		 				   .stream()
 			                               .map(Empleado::getId)
 			                               .collect(Collectors.toList());
-     List<Peticion> user5List = servicepeticion.traerTodas()
+     List<Peticion> user5List = servicepeticion.listarPeticiones()
     		 								   .stream()
 											   .filter(peticion -> idList.contains(peticion.getEmpleadoId()))
 											   .collect(Collectors.toList());
