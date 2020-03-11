@@ -13,7 +13,7 @@ public class SevicePeticionImpl implements ServicePeticion{
 	@Autowired
 	PeticionRepository peticionRepository;
 	@Override
-	public List<Peticion> traerTodas() {
+	public List<Peticion> traerTodas() {// trae una lista de peticiones
 		return peticionRepository.findAll();
 	}
 

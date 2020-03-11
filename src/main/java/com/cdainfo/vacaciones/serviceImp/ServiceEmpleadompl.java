@@ -19,7 +19,7 @@ public class ServiceEmpleadompl implements ServiceEmpleado {
     @Override
     public List<Empleado> listarEmpleados() {
         return empleadoRepository.findAll();
-    }
+    }//trae una lista de empleados
 
 
     @Override

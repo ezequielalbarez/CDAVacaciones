@@ -8,9 +8,7 @@ public interface ServiceEmpleado{
 	List<Empleado> listarEmpleados();//retorna una lista de empleados
 	
     Empleado buscarEmpleadoPorEmail(String email);
-    
- 	//Empleado findById(Integer id);
-	
-	List<Empleado> findByAllLider(Integer lider);
+
+    List<Empleado> findByAllLider(Integer lider);
 
 }

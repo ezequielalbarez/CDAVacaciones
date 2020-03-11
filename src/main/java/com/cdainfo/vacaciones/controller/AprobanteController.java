@@ -42,12 +42,11 @@ public class AprobanteController {
 	 model.addAttribute("ListaPeticiones", lista);
 	 return "alta";
 	 }
-	@GetMapping("/listarepota") //trae los usuarios
+	@GetMapping("/listarepota")
 	 public String traerTodosLider(Model model) {
 	 List<Empleado> emp = serviceEmpleado.findByAllLider(4323);
-	 //List<Peticion> lista =servicepeticion.traerTodas();
 	 
-	System.out.println("Lista de indices de los usuario");
+	System.out.println("Lista de indices de los usuario"); // filtro por lambda
      List<Integer> idList = serviceEmpleado.findByAllLider(4323)
 			    		 				   .stream()
 			                               .map(Empleado::getId)

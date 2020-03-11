@@ -30,12 +30,12 @@
 	  </div>
   	  <div class="col-8">
     	<div class="tab-content" id="nav-tabContent">
-      	<div class="tab-pane fade show active" id="solicitudes" role="tags" aria-labelledby="solicitudes">
+      	<div class="tab-pane fade show active"  role="tags" aria-labelledby="solicitudes">
       	<div class="container">
 
 		</div></div>
-      <div class="tab-pane fade" id="aceptadas" role="tags" aria-labelledby="aceptadas">aceptadas</div>
-      <div class="tab-pane fade" id="rechazadas" role="tags" aria-labelledby="rechazadas">rechazadas</div>
+      <div class="tab-pane fade" role="tags" aria-labelledby="aceptadas">aceptadas</div>
+      <div class="tab-pane fade" role="tags" aria-labelledby="rechazadas">rechazadas</div>
     </div>
   </div>
 </div>
@@ -53,10 +53,11 @@
 			</thead>
 			<tbody>
 				<tr th:each="registro : ${ListaPeticiones}">
-					<!-- td class="text" th:text="${registro.empleadoid}"></td-->
-					<td class="text" th:text="${registro.diaAlta}"></td>
-					<td th:text="${registro.diaHasta}"></td>
-<!-- 					<td th:text="${registro.tipoDeLicencia}"></td> -->
+					<!--td class="text" th:each="${registro.tipo}"></td-->
+					<td class="integer" th:text="${registro.empleadoId}"></td>
+					<td class="date" th:text="${registro.diaAlta}"></td>
+					<td  class="date" th:text="${registro.diaHasta}"></td>
+					<td th:text="${registro.tipoDeLicencia}"></td>
 					<td>
 						<input type="checkbox" name="sel+peticionID">
 					</td>
@@ -68,8 +69,7 @@
 		<textarea  placeholder="motivos" rows=7 cols=90 required></textarea>
 		<br>
 		<button type="submit" class="btn btn-danger btn-lg">rechazar</button> 
-		<button type="submit" class="btn btn-success btn-lg">Aprobar</button> 
-	<!--/form-->
+		<button type="submit" class="btn btn-success btn-lg">Aprobar</button>
 </html>
 
 

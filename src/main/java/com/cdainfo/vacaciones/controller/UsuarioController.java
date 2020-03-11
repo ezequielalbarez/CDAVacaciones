@@ -3,15 +3,12 @@ package com.cdainfo.vacaciones.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.*;
-
 import com.cdainfo.vacaciones.entity.Empleado;
 import com.cdainfo.vacaciones.entity.Peticion;
 import com.cdainfo.vacaciones.serviceImp.ServiceEmpleadompl;
@@ -33,13 +30,7 @@ public class UsuarioController {
 
 	@PostMapping("/cargarPeticion") // carga la peticion
 	public String cargaPeticion(@ModelAttribute Peticion peticion) {
-		//servicePeticion.guardar(peticion);
 		return "peticionEnviada";
-	}
-
-	@GetMapping("/login")
-	public String greetingForm() {
-		return "login";
 	}
 
 	@GetMapping("/logueando")//para el login
@@ -59,9 +50,5 @@ public class UsuarioController {
 			modelo.addAttribute("empleado", emp);//si tiene a quien reportar va a la creacion de peticion
 			return "redirect:/peticion";
 		}
-		// serviceEmpleado.traerUsuario(empleado);
-		// modelo.addAttribute("estado", "Este usuario no existe, por favor ingrese
-		// datos para el alta usuario");
-
 	}
 }
