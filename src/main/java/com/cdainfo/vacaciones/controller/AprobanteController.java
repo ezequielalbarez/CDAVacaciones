@@ -1,8 +1,6 @@
 package com.cdainfo.vacaciones.controller;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +37,7 @@ public class AprobanteController {
 	@GetMapping("/lista") //trae los usuarios
 	 public String getAlltraerTodos(Model model) {
 	 List<Peticion> lista = servicepeticion.traerTodas();
-	 List<Empleado> listaEmpleados = serviceEmpleado.traerTodos();
+	 List<Empleado> listaEmpleados = serviceEmpleado.listarEmpleados();
 	 
 	 model.addAttribute("ListaPeticiones", lista);
 	 return "alta";

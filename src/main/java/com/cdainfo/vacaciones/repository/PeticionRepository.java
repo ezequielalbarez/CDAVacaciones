@@ -1,31 +1,16 @@
 package com.cdainfo.vacaciones.repository;
 
-
-import java.sql.Date;
-import java.util.List;
-import java.util.Optional;
-
+import com.cdainfo.vacaciones.entity.Peticion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cdainfo.vacaciones.entity.Peticion;
-//import com.cdainfo.vacaciones.estados.EstadoImp;
-
-
+import java.util.List;
+import java.util.Optional;
 
 
 @Repository
-public interface PeticionRepository extends JpaRepository<Peticion,Long> {
-	List<Peticion> findAll();
-	//List<Peticion> findAllByDiaAltaAndTipoDeLicenciaAndCantidadDias(String diaAlta, String tipoDeLicencia,Date cantidadDias);
-	Optional<Peticion> findByNumeroPeticion(Long numeroPeticion);
-	//List<Peticion> findAllByEmpleadoId(Integer empleadoId);
-	/*
-	 *  select elfechadesde , elfechahasta , empleado,terape,empreporta
-  from emp_lic inner join empleado on empleado.ternro = emp_lic.empleado
-  where empreporta =4323
+public interface PeticionRepository extends JpaRepository<Peticion, Long> {
+    List<Peticion> findAll();
 
-	 */
-	
-
+    Optional<Peticion> findByNumeroPeticion(Long numeroPeticion);
 }

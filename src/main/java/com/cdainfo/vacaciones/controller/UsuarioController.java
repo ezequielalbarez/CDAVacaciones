@@ -2,20 +2,14 @@ package com.cdainfo.vacaciones.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.*;
 
 import com.cdainfo.vacaciones.entity.Empleado;
@@ -51,7 +45,7 @@ public class UsuarioController {
 	@GetMapping("/logueando")//para el login
 	public String loginci(@RequestParam(value = "entradaEmail", required = true) String buscar, 
 			Model modelo) {//entra el email llamado buscar como parametro 
-		Empleado emp = serviceEmpleado.buscarPorEmail(buscar);//guarda buscar en emp
+		Empleado emp = serviceEmpleado.buscarEmpleadoPorEmail(buscar);//guarda buscar en emp
 
 		if (emp.equals(null)) {//si el email no coincide retornaria denuevo la pagina de login
 			// Usuarioa no valido
