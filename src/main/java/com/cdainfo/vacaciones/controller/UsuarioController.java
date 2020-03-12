@@ -32,7 +32,7 @@ public class UsuarioController {
 		List<Licencia> listaLicencias = serviceLicencia.listarLicencias();
 		model.addAttribute("peticion", new Peticion());
 		model.addAttribute("titulo", "Formulario: Nueva Licencia");
-		model.addAttribute("licencias", listaLicencias);
+		model.addAttribute("listaLicencias", listaLicencias);
 
 		return "formPeticion";
 	}

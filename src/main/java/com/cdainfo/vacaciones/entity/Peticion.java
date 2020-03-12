@@ -36,8 +36,19 @@ public class Peticion {
 	@ManyToOne
 	@JoinColumn(name = "tdnro",
 	referencedColumnName = "tdnro")
-	private Licencia numeroPeticion;
-	
+	private Licencia licenciaId;
+
+	public Peticion() {
+	}
+
+	public Peticion(Integer peticionId, Integer cantidadDias, Date fechaAlta, Date fechaFin, Empleado empleadoId, Licencia licenciaId) {
+		this.peticionId = peticionId;
+		this.cantidadDias = cantidadDias;
+		this.fechaAlta = fechaAlta;
+		this.fechaFin = fechaFin;
+		this.empleadoId = empleadoId;
+		this.licenciaId = licenciaId;
+	}
 
 	public Integer getPeticionId() {
 		return peticionId;
@@ -71,12 +82,12 @@ public class Peticion {
 		this.fechaFin = fechaFin;
 	}
 
-	public Integer getNumeroPeticion() {
-		return numeroPeticion.getId();
+	public Integer getLicenciaId() {
+		return licenciaId.getId();
 	}
 
-	public void setNumeroPeticion(Integer numeroPeticion) {
-		this.numeroPeticion.setId(numeroPeticion);;
+	public void setLicenciaId(Integer licenciaId) {
+		this.licenciaId.setId(licenciaId);;
 	}
 
 	public Integer getEmpleadoId() {
