@@ -14,4 +14,5 @@ public interface EmpleadoRepository extends JpaRepository<Empleado ,  Long>{
 	List<Empleado> findAllByLider(Integer lider);
 
 	Optional<Empleado> findByEmail(String email);
+
 }

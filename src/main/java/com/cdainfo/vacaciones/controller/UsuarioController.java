@@ -27,7 +27,7 @@ public class UsuarioController {
 	@Autowired
 	ServiceLicenciaImpl serviceLicencia;
 
-	@GetMapping("/formulario") // trae la peticion
+	@GetMapping("/formulario")
 	public String peticion(Model model) {
 		List<Licencia> listaLicencias = serviceLicencia.listarLicencias();
 		model.addAttribute("peticion", new Peticion());

@@ -98,7 +98,6 @@ public class Peticion {
 		this.empleadoId.setId(empleadoId);
 	}
 	
-	
 }
 
 

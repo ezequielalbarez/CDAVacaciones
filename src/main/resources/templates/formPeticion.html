@@ -7,12 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
 	<!-- <link href="css/styles.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="../static/css/main.css">
 
-	<style>
-		html {
-			background-color: #2a2c41;
-		}
-	</style>
 </head>
 
 <body>
@@ -77,8 +73,8 @@
 						</div>
 					</div>
 					<div class="uk-margin">
-						<select class="uk-select" id="dropdown-licencias" th:onchange="'showDays(id);'">
-							<option th:each="licencia : ${listaLicencias}" th:value="${licencia.id}" th:text="${licencia.tipo}" ></option>
+						<select class="uk-select" id="dropdown-licencias" th:onchange="'showDays();'">
+							<option th:each="licencia : ${listaLicencias}" th:value="${licencia}" th:text="${licencia.tipo}" ></option>
 						</select>
 					</div>
 					<div class="uk-grid-small" uk-grid>
@@ -106,10 +102,11 @@
 	</div>
 
 	<script th:inline="javascript">
-		function showDays(dropdownId) {
-			var id = document.getElementById(dropdownId);            
-            var value = id.options[id.selectedIndex].value;
+		function showDays() {
+			var dropObject = document.getElementById('dropdown-licencias');            
+            var licencia = dropObject.options[dropObject.selectedIndex].value;
 
+			console.log(licencia.diasD);
             document.getElementById('diasCorrespondientesID').innerHTML = value;
 		}
     </script>
