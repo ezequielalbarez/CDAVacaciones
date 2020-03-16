@@ -2,119 +2,74 @@
 <html lang="en">
 
 <head>
-	<title></title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
-	<!-- <link href="css/styles.css" rel="stylesheet"> -->
-	<link rel="stylesheet" href="../static/css/main.css">
+    <title>Formulario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
+    <!--	main.css : Unicamente posee el degradado del fondo	-->
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
 
 </head>
 
 <body>
-	<!-- <div class="uk-card uk-card-default uk-card-body uk-width-1-2@s">
-        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
-            <li class="uk-active"><a href="#">Peticion</a></li>
-            <li class="uk-parent">
-                <a href="#">Parent</a>
-                <ul class="uk-nav-sub">
-                    <li><a href="#">Sub item</a></li>
-                    <li><a href="#">Sub item</a></li>
-                </ul>
-            </li>
-            <li class="uk-parent">
-                <a href="#">Parent</a>
-                <ul class="uk-nav-sub">
-                    <li><a href="#">Sub item</a></li>
-                    <li><a href="#">Sub item</a></li>
-                </ul>
-            </li>
-            <li class="uk-nav-header">Header</li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
-            <li class="uk-nav-divider"></li>
-            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
-        </ul>
-	</div> -->
 
-
-
-	<div class="uk-container uk-container-small" style="padding-top: 30px;">
-		<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
-			<form class="uk-form-stacked" th:action="@{/cargarPeticion}" th:object="${peticion}" method="POST">
-				<fieldset class="uk-fieldset">
-					<div class="uk-legend">Solicitud de vacaciones</div>
-					<!-- <div class="uk-margin">
-						<label class="uk-form-label">Nombre</label>
-						<div class="uk-form-controls uk-inline uk-width-1-1">
-							<a class="uk-form-icon" href="#" uk-icon="icon: user"></a>
-							<input class="uk-input" type="text" placeholder="Ingrese su nombre">
-						</div>
-					</div> -->
-					<!-- <div class="uk-margin">
-						<label class="uk-form-label">Comentario</label>
-						<div class="uk-form-controls uk-inline uk-width-1-1">
-							<a class="uk-form-icon" href="#" uk-icon="icon: bolt"></a>
-							<input class="uk-input" type="text" placeholder="Ingrese un comentario..">
-						</div>
-					</div> -->
-					<div class="uk-margin">
-						<label class="uk-form-label">Fecha de inicio</label>
-						<div class="uk-form-controls uk-inline">
-							<a class="uk-form-icon"uk-icon="icon: calendar"></a>
-							<input class="uk-input" type="date" th:field="*{fechaAlta}">
-						</div>
-					</div>
-					<div class="uk-margin">
-						<label class="uk-form-label">Fecha de finalizacion</label>
-						<div class="uk-form-controls uk-inline">
-							<a class="uk-form-icon"uk-icon="icon: calendar"></a>
-							<input class="uk-input" type="date" th:field="*{fechaFin}">
-						</div>
-					</div>
-					<div class="uk-margin">
-						<select class="uk-select" id="dropdown-licencias" th:onchange="'showDays();'">
+    <div class="uk-container uk-container-small" style="padding-top: 30px;">
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+            <form class="uk-form-stacked" th:action="@{/cargarPeticion}" th:object="${peticion}" method="POST">
+                <fieldset class="uk-fieldset">
+                    <div class="uk-legend">Solicitud de vacaciones</div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label">Fecha de inicio</label>
+                        <div class="uk-form-controls uk-inline">
+                            <a class="uk-form-icon" uk-icon="icon: calendar"></a>
+                            <input class="uk-input" type="date" th:field="*{fechaAlta}">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label">Fecha de finalizacion</label>
+                        <div class="uk-form-controls uk-inline">
+                            <a class="uk-form-icon" uk-icon="icon: calendar"></a>
+                            <input class="uk-input" type="date" th:field="*{fechaFin}">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <select class="uk-select" id="dropdown-licencias" th:onchange="'showDays();'"> <!-- ejecuta un metodo Js, este se encuentra en el pie de este archivo -->
 							<option th:each="licencia : ${listaLicencias}" th:value="${licencia}" th:text="${licencia.tipo}" ></option>
 						</select>
-					</div>
-					<div class="uk-grid-small" uk-grid>
-						<div class="uk-width-1-2@s">
-							<div class="uk-margin">
-								<input class="uk-input uk-form-blank uk-form-width-medium" type="text" placeholder="Dias correspondientes" disabled>
-							</div>
-						</div>
-						<div class="uk-width-1-2@s">
-							<div class="uk-margin">
-								<label class="uk-input uk-form-width-medium" id="diasCorrespondientesID"> 0 </label>
-							</div>
-						</div>
-					</div>
+                    </div>
+                    <div class="uk-grid-small" uk-grid>
+                        <div class="uk-width-1-2@s">
+                            <div class="uk-margin">
+                                <input class="uk-input uk-form-blank uk-form-width-medium" type="text" placeholder="Dias correspondientes" disabled>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-2@s">
+                            <div class="uk-margin">
+                                <label class="uk-input uk-form-width-medium" id="diasCorrespondientesID"> 0 </label>
+                            </div>
+                        </div>
+                    </div>
 
-					<a class="uk-button uk-button-primary uk-width-1-1" style="margin-top: 10px;" type="submit">Enviar</a>
+                    <a class="uk-button uk-button-primary uk-width-1-1" style="margin-top: 10px;" type="submit">Enviar</a>
+                </fieldset>
+            </form>
 
-					<!-- <a class="uk-button uk-button-primary uk-width-1-1" th:href="@{/productos/editar/} + ${producto.id}">Editar <i
-						class="fa fa-edit"></i></a> -->
-				</fieldset>
-			</form>
+        </div>
 
-		</div>
+    </div>
 
-	</div>
-
-	<script th:inline="javascript">
-		function showDays() {
-			var dropObject = document.getElementById('dropdown-licencias');            
+    <script th:inline="javascript">
+        function showDays() {
+            var dropObject = document.getElementById('dropdown-licencias');
             var licencia = dropObject.options[dropObject.selectedIndex].value;
 
-			console.log(licencia.diasD);
+            console.log(licencia.diasD);
             document.getElementById('diasCorrespondientesID').innerHTML = value;
-		}
+        }
     </script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"
-		integrity="sha256-v789mr/zBbgR53mfydCI78CSAF+9+nRqu+JRfs1UPg0=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"
-		integrity="sha256-l+AmZGiFz41J+gms80qC7faslJDberZDhjEsmDmQy8s=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js" integrity="sha256-v789mr/zBbgR53mfydCI78CSAF+9+nRqu+JRfs1UPg0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js" integrity="sha256-l+AmZGiFz41J+gms80qC7faslJDberZDhjEsmDmQy8s=" crossorigin="anonymous"></script>
 </body>
 
 </html>

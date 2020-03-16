@@ -20,14 +20,16 @@ public class Peticion {
 	private Integer peticionId;
 	
 	@Column(name="elcantdias")
-	private Integer cantidadDias;
+	private Integer cantidadDias;	//-> cantdiasxlicencia
 
 	@Column(name = "elfechadesde")
-	private Date fechaAlta;
+	private Date fechaAlta;			//-> diaAlta
 	
 	@Column(name = "elfechahasta")
-	private Date fechaFin;
-	
+	private Date fechaFin;			// -> diaHasta
+
+	//Por consiguiente tambien se actualizaron los nombres de los Getters y Setters
+
 	@ManyToOne
 	@JoinColumn(name = "empleado",
 	referencedColumnName = "ternro")

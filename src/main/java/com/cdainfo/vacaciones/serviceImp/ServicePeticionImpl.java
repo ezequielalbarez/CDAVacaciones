@@ -8,6 +8,9 @@ import com.cdainfo.vacaciones.repository.PeticionRepository;
 import com.cdainfo.vacaciones.service.ServicePeticion;
 
 @Service
+// Se cambio el nombre de esta clase
+// Antes: SevicePeticionImpl
+// Ahora: ServicePeticionImpl
 public class ServicePeticionImpl implements ServicePeticion{
 	
 	@Autowired

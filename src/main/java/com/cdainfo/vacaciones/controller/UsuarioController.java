@@ -17,6 +17,7 @@ import com.cdainfo.vacaciones.serviceImp.ServiceEmpleadompl;
 import com.cdainfo.vacaciones.serviceImp.ServicePeticionImpl;
 
 @Controller
+//Se agrego RequestMapping
 @RequestMapping({"/peticion"})
 public class UsuarioController {
 
@@ -33,7 +34,6 @@ public class UsuarioController {
 		model.addAttribute("peticion", new Peticion());
 		model.addAttribute("titulo", "Formulario: Nueva Licencia");
 		model.addAttribute("listaLicencias", listaLicencias);
-
 		return "formPeticion";
 	}
 
