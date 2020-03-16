@@ -5,5 +5,5 @@ import com.cdainfo.vacaciones.entity.Peticion;
 
 public interface ServicePeticion {
 	
-	List<Peticion> traerTodas();
+	List<Peticion> listarPeticiones();
 }

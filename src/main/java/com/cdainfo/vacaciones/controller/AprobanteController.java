@@ -1,8 +1,11 @@
 package com.cdainfo.vacaciones.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.cdainfo.vacaciones.entity.Licencia;
+import com.cdainfo.vacaciones.service.ServiceLicencia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cdainfo.vacaciones.entity.Empleado;
 import com.cdainfo.vacaciones.entity.Peticion;
 import com.cdainfo.vacaciones.serviceImp.ServiceEmpleadompl;
-import com.cdainfo.vacaciones.serviceImp.SevicePeticionImpl;
+import com.cdainfo.vacaciones.serviceImp.ServicePeticionImpl;
+
+import javax.swing.*;
+import javax.swing.text.html.Option;
 
 @Controller
 @RequestMapping("/aprobante")
 public class AprobanteController {
-	
 	@Autowired
-	SevicePeticionImpl servicepeticion;
+	ServiceLicencia serviceLicencia;
+	@Autowired
+	ServicePeticionImpl servicepeticion;
 	@Autowired
 	ServiceEmpleadompl serviceEmpleado;
 	
@@ -36,31 +43,31 @@ public class AprobanteController {
 	} 
 	@GetMapping("/lista") //trae los usuarios
 	 public String getAlltraerTodos(Model model) {
-	 List<Peticion> lista = servicepeticion.traerTodas();
-	 List<Empleado> listaEmpleados = serviceEmpleado.listarEmpleados();
+	 List<Peticion> lista = servicepeticion.listarPeticiones();
+	 //List<Empleado> listaEmpleados = serviceEmpleado.listarEmpleados();
+	// List<Licencia> listita = serviceLicencia.listarLicencias();
 	 
 	 model.addAttribute("ListaPeticiones", lista);
+	//	model.addAttribute("ListarLicencias", listita);
 	 return "alta";
 	 }
-	@GetMapping("/listarepota")
-	 public String traerTodosLider(Model model) {
-	 List<Empleado> emp = serviceEmpleado.findByAllLider(4323);
-	 
+	@GetMapping("/listareporta")
+	 public String traerTodosLider(@ModelAttribute Integer emp, Model model ) {
+
+	// List<Empleado>  emp = serviceEmpleado.findByAllLider(4323);
+
 	System.out.println("Lista de indices de los usuario"); // filtro por lambda
      List<Integer> idList = serviceEmpleado.findByAllLider(4323)
 			    		 				   .stream()
 			                               .map(Empleado::getId)
 			                               .collect(Collectors.toList());
-     List<Peticion> user5List = servicepeticion.traerTodas()
+     List<Peticion> user5List = servicepeticion.listarPeticiones()
     		 								   .stream()
-											   .filter(peticion -> idList.contains(peticion.getEmpleadoId()))
+											   .filter(peticion -> idList.contains(peticion.getEmpleadoId().getId()))
 											   .collect(Collectors.toList());
-     //user5List.forEach(System.out::println);
-     
-     //idList.forEach(System.out::println);
-	 
-	 model.addAttribute("ListaPeticiones", idList);
+	 model.addAttribute("ListaPeticiones", user5List);
 	 return "alta";
 	 }
+
     	
 }

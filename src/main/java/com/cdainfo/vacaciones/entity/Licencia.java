@@ -8,13 +8,13 @@ public class Licencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tdnro")
+    @Column(name = "tdnro")//id de la licencia
     private Integer id;
 
-    @Column(name = "tddesc")
+    @Column(name = "tddesc")//tipo de licencia
     private String tipo;
 
-    @Column(name = "tdlimmen")
+    @Column(name = "tdlimmen")//cantidad de dias que tiene esa licencia
     private Integer diasD;
 
     public Integer getId() {

@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Login page</title>
+    <title>Login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.6/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.6/dist/js/uikit-icons.min.js"></script>
 </head>
 <body>
-	<h1>Login page</h1>
-	<form th:action="@{/logueando}" method="get">
-		<p>
-			usuario <input type="text" placeholder="email" name="entradaEmail" id="entradaEmail"required>
-		</p>
-		<input type="submit" value="Login" />
-	</form>
+
+<!--h1>Login page</h1>
+<form th:action="@{/logueando}" method="get">
+    <p>
+        Email <input type="email" placeholder="Ingrese su mail" name="entradaEmail" id="entradaEmail" required>
+    </p>
+    <input type="submit" value="Login" />
+</form-->
+
+<form th:action="@{/peticion/logueando}" method="get">
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                    <input class="uk-input" name="entradaEmail" id="entradaEmail" type="text" placeholder="Ingrese su mail...">
+
+                </div>
+            </div>
+		</div>
+    </div>
+    <input class="uk-button uk-button-primary" type="submit" value="Iniciar">
+</form>
 </body>
 </html>

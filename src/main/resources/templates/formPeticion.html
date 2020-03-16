@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Sistema de Solicitudes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<h1>Peticiones</h1>
+
+	<div class="container-fuild">
+		<form th:action="@{/cargarPeticion}" th:object="${peticion}" method="post" required>
+			<div class="form-group">
+				<label for="input-fechaAlta" class="form-label">Desde</label>
+				<input class="form-input" id="input-fechaAlta" type="date" th:field="*{fechaAlta}" required>
+			</div>
+			<div class="form-group">
+				<label for="input-fechaHasta" class="form-label">Hasta</label>
+				<input type="date" id="input-fechaHasta" th:field="*{fechaFin}" required>
+			</div>
+
+			<label> Tipo de Licencia</label>
+			<div class="form-group">
+				<select id="dropdownType">
+					<option th:each="licencia:${licencias}" 
+									th:value="${licencia.id}" th:text="${licencia.tipo}" />
+				</select>
+			</div>
+			<p>
+				<input type="submit" value="Enviar"><input type="reset" value="Limpiar">
+			</p>
+		</form>
+	</div>
+</body>
+
+</html>

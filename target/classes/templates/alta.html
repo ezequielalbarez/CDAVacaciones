@@ -30,12 +30,12 @@
 	  </div>
   	  <div class="col-8">
     	<div class="tab-content" id="nav-tabContent">
-      	<div class="tab-pane fade show active" id="solicitudes" role="tags" aria-labelledby="solicitudes">
+      	<div class="tab-pane fade show active"  role="tags" aria-labelledby="solicitudes">
       	<div class="container">
 
 		</div></div>
-      <div class="tab-pane fade" id="aceptadas" role="tags" aria-labelledby="aceptadas">aceptadas</div>
-      <div class="tab-pane fade" id="rechazadas" role="tags" aria-labelledby="rechazadas">rechazadas</div>
+      <div class="tab-pane fade" role="tags" aria-labelledby="aceptadas">aceptadas</div>
+      <div class="tab-pane fade" role="tags" aria-labelledby="rechazadas">rechazadas</div>
     </div>
   </div>
 </div>
@@ -45,22 +45,27 @@
 			class="table table-hover table-inverse table-responsive">
 			<thead class="thead-inverse">
 				<tr>
-					<th>Empleado</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
 					<th>Dia Alta</th>
 					<th>Dia hasta</th>
-					<!th>Tipo de licencia</th>
+					<th>Tipo de licencia</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="registro : ${ListaPeticiones}">
 					<!--td class="text" th:each="${registro.tipo}"></td-->
-					<td class="integer" th:text="${registro.empleadoId}"></td>
-					<td class="date" th:text="${registro.diaAlta}"></td>
-					<td  class="date" th:text="${registro.diaHasta}"></td>
-					<td th:text="${registro.tipoDeLicencia}"></td>
+					<td  th:text="${registro.empleadoId.nombre}"></td>
+					<td  th:text="${registro.empleadoId.apellido}"></td>
+					<td  th:text="${registro.fechaAlta}"></td>
+					<td  th:text="${registro.fechaFin}"></td>
+					<!--td--  th:text="${registro.tipo}"></td-->
 					<td>
-						<input type="checkbox" name="sel+peticionID">
+						<input type="checkb ox" name="sel+peticionID">
 					</td>
+				<tr th:each="lista : ${listarLicencias}">
+					<!--td class="text" th:each="${registro.tipo}"></td-->
+					<td  th:text="${lista.tipo}"></td>
 				</tr>		
 			</tbody>
 		</table> 

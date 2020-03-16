@@ -34,6 +34,11 @@ public class ServiceEmpleadompl implements ServiceEmpleado {
         return null;
     }
 
+//    @Override
+//    public List<Empleado> listarNombre(String nombre) {
+//        return empleadoRepository.findAllByNombre(nombre);
+//    }
+
 
     @Override
     public List<Empleado> findByAllLider(Integer lider) {

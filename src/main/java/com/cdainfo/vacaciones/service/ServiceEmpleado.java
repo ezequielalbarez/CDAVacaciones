@@ -9,6 +9,8 @@ public interface ServiceEmpleado{
 	
     Empleado buscarEmpleadoPorEmail(String email);
 
+
     List<Empleado> findByAllLider(Integer lider);
+
 
 }

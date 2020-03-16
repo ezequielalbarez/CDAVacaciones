@@ -16,16 +16,17 @@ public class Peticion {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO )
-	private Integer emp_licnro;
+	@Column(name = "emp_licnro")
+	private Integer peticionId;
 	
 	@Column(name="elcantdias")
-	private Integer cantdiasxlicencia;
+	private Integer cantidadDias;
 
 	@Column(name = "elfechadesde")
-	private Date diaAlta;
+	private Date fechaAlta;
 	
 	@Column(name = "elfechahasta")
-	private Date diaHasta;
+	private Date fechaFin;
 	
 	@ManyToOne
 	@JoinColumn(name = "empleado",
@@ -38,55 +39,53 @@ public class Peticion {
 	private Licencia numeroPeticion;
 	
 
-	public Integer getEmp_licnro() {
-		return emp_licnro;
+	public Integer getPeticionId() {
+		return peticionId;
 	}
 
-	public void setEmp_licnro(Integer emp_licnro) {
-		this.emp_licnro = emp_licnro;
+	public void setPeticionId(Integer peticionId) {
+		this.peticionId = peticionId;
 	}
 
-	public Integer getCantdiasxlicencia() {
-		return cantdiasxlicencia;
+	public Integer getCantidadDias() {
+		return cantidadDias;
 	}
 
-	public void setCantdiasxlicencia(Integer cantdiasxlicencia) {
-		this.cantdiasxlicencia = cantdiasxlicencia;
+	public void setCantidadDias(Integer cantidadDias) {
+		this.cantidadDias = cantidadDias;
 	}
 
-	public Date getDiaAlta() {
-		return diaAlta;
+	public Date getFechaAlta() {
+		return fechaAlta;
 	}
 
-	public void setDiaAlta(Date diaAlta) {
-		this.diaAlta = diaAlta;
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
 	}
 
-	public Date getDiaHasta() {
-		return diaHasta;
+	public Date getFechaFin() {
+		return fechaFin;
 	}
 
-	public void setDiaHasta(Date diaHasta) {
-		this.diaHasta = diaHasta;
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 
-	public Integer getNumeroPeticion() {
-		return numeroPeticion.getId();
+	public Empleado getEmpleadoId() {
+		return empleadoId;
 	}
 
-	public void setNumeroPeticion(Integer numeroPeticion) {
-		this.numeroPeticion.setId(numeroPeticion);;
+	public void setEmpleadoId(Empleado empleadoId) {
+		this.empleadoId = empleadoId;
 	}
 
-	public Integer getEmpleadoId() {
-		return empleadoId.getId();
+	public Licencia getNumeroPeticion() {
+		return numeroPeticion;
 	}
 
-	public void setEmpleadoId(Integer empleadoId) {
-		this.empleadoId.setId(empleadoId);
+	public void setNumeroPeticion(Licencia numeroPeticion) {
+		this.numeroPeticion = numeroPeticion;
 	}
-	
-	
 }
 
 

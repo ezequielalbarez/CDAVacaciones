@@ -9,8 +9,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface PeticionRepository extends JpaRepository<Peticion, Long> {
-    List<Peticion> findAll();
+public interface PeticionRepository extends JpaRepository<Peticion, Integer> {
 
-    Optional<Peticion> findByNumeroPeticion(Long numeroPeticion);
+    Optional<Peticion> findByNumeroPeticion(int numeroPeticion);
 }
