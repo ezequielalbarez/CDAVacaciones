@@ -49,4 +49,12 @@ public class Licencia {
                 ", diasD=" + diasD +
                 '}';
     }
+public Licencia(){
+
+}
+    public Licencia(Integer id, String tipo, Integer diasD) {
+        this.id = id;
+        this.tipo = tipo;
+        this.diasD = diasD;
+    }
 }

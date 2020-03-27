@@ -18,23 +18,20 @@ import com.cdainfo.vacaciones.serviceImp.ServicePeticionImpl;
 
 @Controller
 @RequestMapping("/peticion")
-public class UsuarioController {
+public class UsuarioController{
 
-	@Autowired
-	ServicePeticionImpl servicePeticion;
 	@Autowired
 	ServiceEmpleadompl serviceEmpleado;
 	@Autowired
 	ServiceLicenciaImpl serviceLicencia;
 
-	@GetMapping("/formulario") // trae la peticion
+	@GetMapping("/formulario") //trae el formulario
 	public String peticion(Model model,
 						   @ModelAttribute Empleado empleado) {
 		List<Licencia> listaLicencias = serviceLicencia.listarLicencias();
 		model.addAttribute("peticion", new Peticion());
 		model.addAttribute("titulo", "Formulario: Nueva Licencia");
-		model.addAttribute("licencias", listaLicencias);
-
+		model.addAttribute("listaLicencias", listaLicencias);
 		return "formPeticion";
 	}
 
@@ -54,17 +51,19 @@ public class UsuarioController {
 			// Usuarioa no valido
 			return "/login";
 		} else if (emp.getLider()==null) {//si el email coincide pero es un lider (que no tenga a quierenes reportar)
-			// traer las peticiones correspondiente a sus empleados a cargo.
-			//List<Peticion> unaListado = servicePeticion.listarPeticiones();//trae una lista
-			modelo.addAttribute("id", emp.getId());
+			// traer las peticiones correspondiente a sus empleados a cargo
+
+			modelo.addAttribute(emp.getId());
 			return "redirect:/aprobante/listareporta";
 		} else {
-			modelo.addAttribute("empleado", emp);//si tiene a quien reportar va a la creacion de peticion
-			return "redirect:/peticion/formulario";
+			modelo.addAttribute(emp.getId());//si tiene a quien reportar va a la creacion de peticion
+			return ("redirect:/peticion/formulario");
 		}
 	}
 	@GetMapping("/login")
 	public String login(){
 		return "login";
 	}
+
+
 }

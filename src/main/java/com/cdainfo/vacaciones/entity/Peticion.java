@@ -20,14 +20,16 @@ public class Peticion {
 	private Integer peticionId;
 	
 	@Column(name="elcantdias")
-	private Integer cantidadDias;
+	private Integer cantidadDias;	//-> cantdiasxlicencia
 
 	@Column(name = "elfechadesde")
-	private Date fechaAlta;
+	private Date fechaAlta;			//-> diaAlta
 	
 	@Column(name = "elfechahasta")
-	private Date fechaFin;
-	
+	private Date fechaFin;			// -> diaHasta
+
+	//Por consiguiente tambien se actualizaron los nombres de los Getters y Setters
+
 	@ManyToOne
 	@JoinColumn(name = "empleado",
 	referencedColumnName = "ternro")
@@ -36,8 +38,19 @@ public class Peticion {
 	@ManyToOne
 	@JoinColumn(name = "tdnro",
 	referencedColumnName = "tdnro")
-	private Licencia numeroPeticion;
-	
+	private Licencia licenciaId;
+
+	public Peticion(Integer peticionId, Integer cantidadDias, Date fechaAlta, Date fechaFin, Empleado empleadoId, Licencia licenciaId) {
+		this.peticionId = peticionId;
+		this.cantidadDias = cantidadDias;
+		this.fechaAlta = fechaAlta;
+		this.fechaFin = fechaFin;
+		this.empleadoId = empleadoId;
+		this.licenciaId = licenciaId;
+	}
+
+	public Peticion() {
+	}
 
 	public Integer getPeticionId() {
 		return peticionId;
@@ -79,12 +92,12 @@ public class Peticion {
 		this.empleadoId = empleadoId;
 	}
 
-	public Licencia getNumeroPeticion() {
-		return numeroPeticion;
+	public Licencia getLicenciaId() {
+		return licenciaId;
 	}
 
-	public void setNumeroPeticion(Licencia numeroPeticion) {
-		this.numeroPeticion = numeroPeticion;
+	public void setLicenciaId(Licencia licenciaId) {
+		this.licenciaId = licenciaId;
 	}
 }
 

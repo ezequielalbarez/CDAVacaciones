@@ -24,8 +24,19 @@ public class Empleado  {
 	
 	@Column(name="empreporta")
 	private Integer lider;
-	
-    public Integer getLider() {
+
+	public Empleado() {
+	}
+
+	public Empleado(Integer id, String email, String nombre, String apellido, Integer lider) {
+		this.id = id;
+		this.email = email;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.lider = lider;
+	}
+
+	public Integer getLider() {
 		return lider;
 	}
 
